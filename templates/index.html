@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Prediction Form</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/image14-1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Enables scrolling for the form content */
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Mortgage Prediction Form</h1>
+        <form action="/predict" method="POST">
+            <!-- Months Delinquent -->
+            <div class="mb-3">
+                <label for="MonthsDelinquent" class="form-label">Months Delinquent</label>
+                <input type="number" class="form-control" id="MonthsDelinquent" name="MonthsDelinquent" value="{{ num_cols['MonthsDelinquent'] }}" required>
+            </div>
+
+            <!-- DTI -->
+            <div class="mb-3">
+                <label for="DTI" class="form-label">DTI</label>
+                <input type="number" class="form-control" id="DTI" name="DTI" value="{{ num_cols['DTI'] }}" required>
+            </div>
+
+            <!-- Original Interest Rate -->
+            <div class="mb-3">
+                <label for="OrigInterestRate" class="form-label">Original Interest Rate</label>
+                <input type="number" step="0.01" class="form-control" id="OrigInterestRate" name="OrigInterestRate" value="{{ num_cols['OrigInterestRate'] }}" required>
+            </div>
+
+            <!-- Original UPB -->
+            <div class="mb-3">
+                <label for="OrigUPB" class="form-label">Original UPB</label>
+                <input type="number" class="form-control" id="OrigUPB" name="OrigUPB" value="{{ num_cols['OrigUPB'] }}" required>
+            </div>
+
+            <!-- Original Loan Term -->
+            <div class="mb-3">
+                <label for="OrigLoanTerm" class="form-label">Original Loan Term</label>
+                <input type="number" class="form-control" id="OrigLoanTerm" name="OrigLoanTerm" value="{{ num_cols['OrigLoanTerm'] }}" required>
+            </div>
+
+            <!-- Units -->
+            <div class="mb-3">
+                <label for="Units" class="form-label">Units</label>
+                <input type="number" class="form-control" id="Units" name="Units" value="{{ num_cols['Units'] }}" required>
+            </div>
+
+            <!-- MIP -->
+            <div class="mb-3">
+                <label for="MIP" class="form-label">MIP</label>
+                <input type="number" step="0.01" class="form-control" id="MIP" name="MIP" value="{{ num_cols['MIP'] }}" required>
+            </div>
+
+            <!-- Channel -->
+            <div class="mb-3">
+                <label for="Channel" class="form-label">Channel</label>
+                <select class="form-select" id="Channel" name="Channel" required>
+                    {% for option in cat_cols['Channel'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- First Time Homebuyer -->
+            <div class="mb-3">
+                <label for="FirstTimeHomebuyer" class="form-label">First Time Homebuyer</label>
+                <select class="form-select" id="FirstTimeHomebuyer" name="FirstTimeHomebuyer" required>
+                    {% for option in cat_cols['FirstTimeHomebuyer'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Loan Purpose -->
+            <div class="mb-3">
+                <label for="LoanPurpose" class="form-label">Loan Purpose</label>
+                <select class="form-select" id="LoanPurpose" name="LoanPurpose" required>
+                    {% for option in cat_cols['LoanPurpose'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Seller Name -->
+            <div class="mb-3">
+                <label for="SellerName" class="form-label">Seller Name</label>
+                <select class="form-select" id="SellerName" name="SellerName" required>
+                    {% for option in cat_cols['SellerName'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Servicer Name -->
+            <div class="mb-3">
+                <label for="ServicerName" class="form-label">Servicer Name</label>
+                <select class="form-select" id="ServicerName" name="ServicerName" required>
+                    {% for option in cat_cols['ServicerName'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- NumBorrowers -->
+            <div class="mb-3">
+                <label for="NumBorrowers" class="form-label">NumBorrowers</label>
+                <input type="number" step="0.01" class="form-control" id="NumBorrowers" name="NumBorrowers" value="{{ num_cols['NumBorrowers'] }}" required>
+            </div>
+
+              <!-- Credit_range-->
+              <div class="mb-3">
+                <label for="Credit_range" class="form-label">Credit range</label>
+                <select class="form-select" id="Credit_range" name="Credit_range" required>
+                    {% for option in cat_cols['Credit_range'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+
+             <!-- LTV_range-->
+             <div class="mb-3">
+                <label for="LTV_range" class="form-label"> LTV range</label>
+                <select class="form-select" id="LTV_range" name="LTV_range" required>
+                    {% for option in cat_cols['LTV_range'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+
+            <!-- OCLTV_range-->
+            <div class="mb-3">
+                <label for="OCLTV_range" class="form-label"> OCLTV range</label>
+                <select class="form-select" id="OCLTV_range" name="OCLTV_range" required>
+                    {% for option in cat_cols['OCLTV_range'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+                
+            <!-- Repay_range-->
+            <div class="mb-3">
+                <label for="Repay_range" class="form-label"> Repay range </label>
+                <select class="form-select" id="Repay_range" name="Repay_range" required>
+                    {% for option in cat_cols['Repay_range'] %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+
+            <!-- Submit Button -->
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </div>
+        </form>
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

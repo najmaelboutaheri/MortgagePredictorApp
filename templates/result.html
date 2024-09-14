@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_result.css') }}">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image:  url('/static/images/image14-1.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+    }
+</style>
+<body>
+    <div class="container results">
+        <h1>Prediction Results</h1>
+        {% if error_message %}
+            <h2 style="color: red;">{{ error_message }}</h2>
+        {% else %}
+        <p>Classification Prediction (delinquency status Category):
+            {% if classification_prediction == 0 %}
+            <h2>Not Delinquent</h2>
+            {% else %}
+            <h2>Delinquent</h2>
+            {% endif %}
+        </p>
+        <p>Regression Prediction (Prepayment Risk Amount):</p> 
+        <h2>{{ regression_prediction }} USD</h2>
+        <p>Time taken for prediction: </p>
+        <h2>{{ time_taken }} seconds</h2>
+        {% endif %}
+        <a href="{{ url_for('home') }}" class="back-link">Back to Input Form</a>
+    </div>
+</body>
+</html>
