@@ -138,5 +138,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 ### Contact:
-- **Email:** najma.elboutaheri@etu.uae.ac.ma
-- **Linkdin profile:** https://www.linkedin.com/in/najma-el-boutaheri-8185a1267/
+- **[Email:](najma.elboutaheri@etu.uae.ac.ma)** 
+- **[Linkdin profile:](https://www.linkedin.com/in/najma-el-boutaheri-8185a1267/)** 
