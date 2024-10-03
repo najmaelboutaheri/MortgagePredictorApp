@@ -7,9 +7,9 @@ This is a Flask-based web application for predicting mortgage loan classificatio
 - [Features](#features)
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
-- [Model Overview](#model-overview)
 - [Form Inputs](#form-inputs)
 - [Logging](#logging)
+- [Model Overview](#model-overview)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -42,7 +42,8 @@ cd mortgage-prepayment-prediction
 
 ### Install Dependencies
 Install the required Python packages:
-```pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
 ```
 
 ### Add the Pre-trained Model
@@ -50,7 +51,8 @@ Download the pre-trained model file **mortgage_pipeline_model_.pkl** and place i
 
 ### Run the Application
 Start the Flask application by running:
-```python app.py
+```bash
+python app.py
 ```
 Open your browser and go to ```http://localhost:5000``` to access the web interface.
 
@@ -60,6 +62,7 @@ Open your browser and go to ```http://localhost:5000``` to access the web interf
 3. Click "Submit" to make a prediction.
 3. The application will return the prediction results for both classification (e.g., prepayment or delinquency risk) and regression (e.g., estimated future payments).
 If the input values are invalid or out of range, the app will notify you of the errors.
+
 ### Form Inputs
 The form expects the following input fields:
 
@@ -110,4 +113,29 @@ If you'd like to contribute to this project:
 ### License
 
 This project is licensed under the MIT License.
+License content:
+```
+MIT License
 
+Copyright (c) 2024 NAJMA EL BOUTAHERI.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+### Contact:
+- Email: najma.elboutaheri@etu.uae.ac.ma
