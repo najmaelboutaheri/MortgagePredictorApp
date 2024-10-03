@@ -139,4 +139,4 @@ SOFTWARE.
 ```
 ### Contact:
 - **[Email](najma.elboutaheri@etu.uae.ac.ma)** 
-- **[Linkdin profile](https://www.linkedin.com/in/najma-el-boutaheri-8185a1267/)** 
+- **[Linkedin profile](https://www.linkedin.com/in/najma-el-boutaheri-8185a1267/)** 
