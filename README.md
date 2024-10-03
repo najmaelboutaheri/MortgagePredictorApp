@@ -1,58 +1,113 @@
-# Mortgage Prediction Web Application
+# Mortgage Prepayment Prediction App
 
-This web application predicts the prepayment risk of mortgage loans. It allows users to input various mortgage-related parameters and generates both classification and regression predictions for the prepayment risk.
+This is a Flask-based web application for predicting mortgage loan classifications and regressions, specifically prepayment and delinquency risks. The application uses a pre-trained machine learning model and takes various input features related to the mortgage, borrower, and loan properties to perform predictions.
 
 ## Table of Contents
-
 - [Overview](#overview)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Setup Instructions](#setup-instructions)
+- [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Future Enhancements](#future-enhancements)
+- [Model Overview](#model-overview)
+- [Form Inputs](#form-inputs)
+- [Logging](#logging)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
-
-This project is a Flask-based web application that takes mortgage loan data as input and predicts:
-- **Prepayment Risk Category** (Classification)
-- **Prepayment Risk Percentage** (Regression)
-
-The user can input values such as `Credit Score`, `LTV`, `DTI`, `Months in Repayment`, etc., and the model will return predictions based on the trained machine learning models.
+The application accepts inputs related to mortgage loans, such as borrower attributes, loan details, and mortgage history, to predict the prepayment and delinquency likelihood using machine learning models.
 
 ## Features
+- Web-based form to input mortgage loan details.
+- Backend Flask application that handles form data and performs predictions.
+- Categorical and numerical validation for user input.
+- Logging mechanism to track user interaction and any errors.
+- Pre-trained machine learning model using scikit-learn for prediction.
 
-- Input form for mortgage data such as `Credit Score`, `LTV`, `Months in Repayment`, etc.
-- Predicts:
-  - **Classification**: Risk category (e.g., Low, Medium, High)
-  - **Regression**: Percentage risk of prepayment
-- Provides feedback on time taken for prediction
-- Simple and intuitive user interface
+## Setup and Installation
 
-## Technologies Used
+### Prerequisites
+Make sure you have the following installed on your machine:
+- Python 3.x
+- Flask
+- scikit-learn
+- pandas
+- joblib
+- HTML templates
 
-- **Backend**: Flask (Python)
-- **Frontend**: HTML, CSS (custom)
-- **Machine Learning**: Scikit-learn, Pandas, NumPy
-- **Visualization**: Matplotlib (optional, if visualization is implemented)
-- **Deployment**: Flask
-
-## Project Structure
-
+### Clone the Repository
 ```bash
-Mortgage-Prediction/
-│
-├── static/
-│   └── css/
-│       └── style.css     # Custom CSS for styling
-│
-├── templates/
-│   └── index.html         # Main input form page
-│   └── results.html      # Prediction results page
-│
-├── app.py                # Main Flask application file
-├── model.py              # File containing model loading and prediction logic
-├── README.md             # Project documentation
-└── requirements.txt      # Python dependencies
+git clone https://github.com/yourusername/mortgage-prepayment-prediction.git
+cd mortgage-prepayment-prediction
+```
+
+### Install Dependencies
+Install the required Python packages:
+```pip install -r requirements.txt
+```
+
+### Add the Pre-trained Model
+Download the pre-trained model file **mortgage_pipeline_model_.pkl** and place it in the **models/** directory.
+
+### Run the Application
+Start the Flask application by running:
+```python app.py
+```
+Open your browser and go to ```http://localhost:5000``` to access the web interface.
+
+### Usage
+1. Open the web interface.
+2. Fill in the required fields with the mortgage loan information.
+3. Click "Submit" to make a prediction.
+3. The application will return the prediction results for both classification (e.g., prepayment or delinquency risk) and regression (e.g., estimated future payments).
+If the input values are invalid or out of range, the app will notify you of the errors.
+### Form Inputs
+The form expects the following input fields:
+
+#### Categorical Features:
+- Channel: Retail, Broker, Correspondent
+- FirstTimeHomebuyer: Y, N
+- LoanPurpose: P, R
+- SellerName: AC, NO, FL, CO
+- ServicerName: GMACMTGECORP, WELLSFARGOBANKNA, etc.
+- Credit_range: Very Poor, Poor, Fair, Good, Excellent
+- LTV_range: Low LTV, Medium LTV, High LTV
+- OCLTV_range: Low LTV, Medium LTV, High LTV
+- Repay_range: 0-4 years, 4-8 years, etc.
+#### Numerical Features:
+- MonthsDelinquent: Numeric value between 0 and 120
+- DTI: Numeric value between 0 and 100
+- OrigInterestRate: Numeric value between 0 and 20
+- OrigUPB: Numeric value up to 1,000,000
+- OrigLoanTerm: Numeric value between 0 and 360
+- Units: Numeric value between 1 and 10
+- MIP: Numeric value between 0 and 1
+- NumBorrowers: Numeric value between 1 and 10
+#### Logging
+The application uses Python's built-in logging library for debugging and error tracking. Logs are output to the console by default.
+
+### Model Overview
+The machine learning model used in this app is built using scikit-learn and consists of both classification and regression predictions. The model has been trained to predict:
+
+- Classification: Prepayment or delinquency risk of the loan.
+- Regression: Estimated future mortgage-related metrics like payments and prepayment.
+#### Preprocessing Steps
+The preprocessing steps applied to the data include:
+
+1. Frequency encoding for categorical variables.
+2. Binning of numerical features (e.g., DTI bins).
+3. Creation of new features such as MonthlyPayment, InterestAmount, and Prepayment.
+4. The model pipeline combines preprocessing with machine learning algorithms such as Logistic Regression for classification and Lasso Regression for regression tasks.
+
+### Contributing
+If you'd like to contribute to this project:
+
+1. Fork the repository.
+2. Create a new feature branch (git checkout -b feature-branch).
+3. Commit your changes (git commit -m "Add feature").
+4. Push to the branch (git push origin feature-branch).
+5. Open a Pull Request.
+
+### License
+
+This project is licensed under the MIT License.
+
