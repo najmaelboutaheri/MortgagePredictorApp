@@ -100,6 +100,36 @@ The preprocessing steps applied to the data include:
 2. Binning of numerical features (e.g., DTI bins).
 3. Creation of new features such as MonthlyPayment, InterestAmount, and Prepayment.
 4. The model pipeline combines preprocessing with machine learning algorithms such as Logistic Regression for classification and Lasso Regression for regression tasks.
+   
+#### CI/CD Pipeline
+##### Workflow
+1. Build Stage:
+- Installs dependencies.
+- Builds Docker image.
+- Pushes image to DockerHub.
+2. Deploy Stage:
+- Pulls the Docker image to Azure VM.
+- Restarts the container with the latest version.
+3. Secrets:
+- DOCKER_USERNAME, DOCKER_PASSWORD for DockerHub.
+- AZURE_VM_IP, AZURE_VM_USERNAME, AZURE_VM_PRIVATE_KEY for Azure deployment.
+Finaly the CI-CD pipeline runned sucessfully.
+
+<img width="929" alt="azure23" src="https://github.com/user-attachments/assets/7976d668-e46a-4dd7-9f14-a84bc52433ee" />
+
+Acess the the virtual machine and make sure the docker container is running:
+
+<img width="872" alt="azure22" src="https://github.com/user-attachments/assets/329fad03-1dfe-41a5-ba84-608a36e0d912" />
+
+Then acess the user interface:
+
+<img width="959" alt="azure24" src="https://github.com/user-attachments/assets/d5fe9789-84c8-4f62-92f6-f5c003d9cd46" />
+
+Explore model prediction results:
+
+<img width="957" alt="azure25" src="https://github.com/user-attachments/assets/9f3a1686-92c0-45f9-b191-5127d8bb4804" />
+
+
 
 ### Contributing
 If you'd like to contribute to this project:
