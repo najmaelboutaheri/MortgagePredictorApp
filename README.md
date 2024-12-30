@@ -4,6 +4,7 @@ This is a Flask-based web application for predicting mortgage loan classificatio
 
 ## Table of Contents
 - [Overview](#overview)
+- [Architecture](#architecture)
 - [Features](#features)
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
@@ -15,6 +16,9 @@ This is a Flask-based web application for predicting mortgage loan classificatio
 
 ## Overview
 The application accepts inputs related to mortgage loans, such as borrower attributes, loan details, and mortgage history, to predict the prepayment and delinquency likelihood using machine learning models.
+
+## Architecture
+<img width="509" alt="image" src="https://github.com/user-attachments/assets/bbfe2a31-3b60-4703-ad1b-26d2c60ff040" />
 
 ## Features
 - Web-based form to input mortgage loan details.
