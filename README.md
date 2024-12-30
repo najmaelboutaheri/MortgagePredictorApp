@@ -20,6 +20,9 @@ The application accepts inputs related to mortgage loans, such as borrower attri
 ## Architecture
 <img width="509" alt="image" src="https://github.com/user-attachments/assets/bbfe2a31-3b60-4703-ad1b-26d2c60ff040" />
 
+## Background workflow
+<img width="432" alt="image" src="https://github.com/user-attachments/assets/38f67fc3-1049-4bbb-b2f1-7fa1af77861c" />
+
 ## Features
 - Web-based form to input mortgage loan details.
 - Backend Flask application that handles form data and performs predictions.
